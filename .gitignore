@@ -1,34 +1,244 @@
-# Gradle files
-.gradle/
-build/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TipTop Unified</title>
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-# Local configuration file (sdk path, etc)
-local.properties
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-# Log/OS Files
-*.log
+        :root {
+            --primary-gradient: linear-gradient(45deg, #f43f5e, #ec4899);
+        }
 
-# Android Studio generated files and folders
-captures/
-.externalNativeBuild/
-.cxx/
-*.aab
-*.apk
-output-metadata.json
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
 
-# IntelliJ
-*.iml
-.idea/
-misc.xml
-deploymentTargetDropDown.xml
-render.experimental.xml
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+        }
+        
+        .dark .glass {
+            background: rgba(17, 17, 17, 0.95);
+        }
 
-# Keystore files
-*.jks
-*.keystore
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -2px;
+            left: 0;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
 
-# Android Profiling
-*.hprof
+        .text-gradient {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-zinc-100 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 min-h-screen">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-72 bg-white dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-800 flex flex-col">
+            <div class="p-6 border-b border-zinc-200 dark:border-zinc-800">
+                <div class="flex items-center gap-3">
+                    <!-- Logo -->
+                    <img src="YOUR-LOGO-URL-HERE" 
+                         class="h-9 w-9 object-contain" 
+                         alt="TipTop Logo"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-9 h-9 bg-gradient-to-br from-rose-500 to-pink-500 rounded-2xl items-center justify-center text-white font-bold text-2xl">
+                        T
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold tracking-tighter text-gradient">TipTop</h1>
+                        <p class="text-xs text-zinc-500 -mt-1">Unified</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1 overflow-auto p-4">
+                <nav class="space-y-1">
+                    <a href="#" onclick="switchTab(0)" class="nav-link active flex items-center gap-3 px-4 py-3 rounded-2xl bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 font-medium">
+                        <i class="fa-solid fa-house w-5"></i>
+                        <span>Overview</span>
+                    </a>
+                    <a href="#" onclick="switchTab(1)" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                        <i class="fa-solid fa-chart-line w-5"></i>
+                        <span>Analytics</span>
+                    </a>
+                    <a href="#" onclick="switchTab(2)" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                        <i class="fa-solid fa-users w-5"></i>
+                        <span>Team</span>
+                    </a>
+                    <a href="#" onclick="switchTab(3)" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                        <i class="fa-solid fa-wallet w-5"></i>
+                        <span>Finance</span>
+                    </a>
+                    <a href="#" onclick="switchTab(4)" class="nav-link flex items-center gap-3 px-4 py-3 rounded-2xl hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                        <i class="fa-solid fa-gear w-5"></i>
+                        <span>Settings</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="p-4 border-t border-zinc-200 dark:border-zinc-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-zinc-300 dark:bg-zinc-700 rounded-full"></div>
+                    <div class="flex-1">
+                        <div class="font-medium">Alex Rivera</div>
+                        <div class="text-xs text-zinc-500">Administrator</div>
+                    </div>
+                    <button onclick="toggleDarkMode()" class="w-9 h-9 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-xl">
+                        <i id="theme-icon" class="fa-solid fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex flex-col">
+            <!-- Top Bar -->
+            <div class="h-16 border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/80 glass flex items-center px-8 justify-between">
+                <div class="relative w-80">
+                    <input type="text" id="search-input" 
+                           class="w-full bg-zinc-100 dark:bg-zinc-800 pl-11 py-3 rounded-3xl text-sm focus:outline-none focus:ring-2 focus:ring-rose-400"
+                           placeholder="Search anything...">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-zinc-400"></i>
+                </div>
+                
+                <button onclick="newEntry()" 
+                        class="btn-primary text-white flex items-center gap-2 px-6 py-3 rounded-3xl font-semibold">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>New Entry</span>
+                </button>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="flex-1 overflow-auto p-8">
+                <div id="tab-0">
+                    <h1 class="text-4xl font-bold tracking-tight">Good afternoon, Alex 👋</h1>
+                    <p class="text-zinc-500 mt-1">Here's what's happening with your business today</p>
+
+                    <div class="grid grid-cols-4 gap-6 mt-10">
+                        <div class="glass border border-zinc-200 dark:border-zinc-700 rounded-3xl p-6 card-hover">
+                            <p class="text-sm text-zinc-500">Total Revenue</p>
+                            <p class="text-4xl font-semibold mt-2">$248,591</p>
+                            <p class="text-emerald-500 text-sm mt-4">↑ 18.2% this month</p>
+                        </div>
+                        <div class="glass border border-zinc-200 dark:border-zinc-700 rounded-3xl p-6 card-hover">
+                            <p class="text-sm text-zinc-500">Active Projects</p>
+                            <p class="text-4xl font-semibold mt-2">47</p>
+                            <p class="text-blue-500 text-sm mt-4">↑ 4 this week</p>
+                        </div>
+                        <div class="glass border border-zinc-200 dark:border-zinc-700 rounded-3xl p-6 card-hover">
+                            <p class="text-sm text-zinc-500">Completion Rate</p>
+                            <p class="text-4xl font-semibold mt-2">92%</p>
+                            <p class="text-purple-500 text-sm mt-4">↑ 3%</p>
+                        </div>
+                        <div class="glass border border-zinc-200 dark:border-zinc-700 rounded-3xl p-6 card-hover">
+                            <p class="text-sm text-zinc-500">Avg Response</p>
+                            <p class="text-4xl font-semibold mt-2">4.8m</p>
+                            <p class="text-amber-500 text-sm mt-4">↓ 12s</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other tabs (hidden) -->
+                <div id="tab-1" class="hidden"><h1 class="text-3xl font-bold">Analytics</h1></div>
+                <div id="tab-2" class="hidden"><h1 class="text-3xl font-bold">Team</h1></div>
+                <div id="tab-3" class="hidden"><h1 class="text-3xl font-bold">Finance</h1></div>
+                <div id="tab-4" class="hidden"><h1 class="text-3xl font-bold">Settings</h1></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(n) {
+            document.querySelectorAll('[id^="tab-"]').forEach(tab => tab.classList.add('hidden'));
+            document.getElementById(`tab-${n}`).classList.remove('hidden');
+            
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            if (icon.classList.contains('fa-moon')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+
+        function newEntry() {
+            const msg = document.createElement('div');
+            msg.className = "fixed bottom-8 right-8 bg-zinc-900 text-white px-6 py-4 rounded-3xl shadow-2xl flex items-center gap-3 z-50";
+            msg.innerHTML = `✅ New entry created successfully!`;
+            document.body.appendChild(msg);
+            
+            setTimeout(() => msg.remove(), 2500);
+        }
+
+        // Keyboard shortcut for search
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement.tagName !== "INPUT") {
+                e.preventDefault();
+                document.getElementById('search-input').focus();
+            }
+        });
+
+        // Initialize
+        window.onload = () => {
+            console.log('%cTipTop Unified - All-in-One Ready ✨', 'color:#f43f5e; font-size:14px; font-weight:bold');
+        };
+    </script>
+</body>
+</html>
